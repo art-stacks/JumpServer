@@ -1,0 +1,12 @@
+@AllDevices
+conf t
+ username art privilege 15 secret pass
+ ip domain-name
+ crypto key generate rsa label sysad modulus 2048 exportable
+ ip ssh version 2
+ ip ssh rsa keypair-name sysad
+ line vty 0 14
+  transport input all
+  login local
+  exec-timeout 1 30
+ end
