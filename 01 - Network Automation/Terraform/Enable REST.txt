@@ -1,0 +1,11 @@
+@edge
+conf t
+ username admin privilege 15 secret C1sc0123
+ ip http authentication local
+ ip http secure-server
+ restconf
+ line vty 0 14
+  login local
+  transport input all
+  exec-timeout 0 0
+  end

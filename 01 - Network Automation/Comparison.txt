@@ -1,0 +1,5 @@
+Chef  		language: ruby, agent-based, pull-based management
+Puppet  	language: ruby, agent-based, pulls-based management
+SaltStack 	language: python, agent-based (For NX-OS), push-based
+Ansible 	language: hcl, push-based
+

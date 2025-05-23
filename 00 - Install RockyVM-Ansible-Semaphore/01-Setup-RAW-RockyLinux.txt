@@ -1,0 +1,19 @@
+Source Download Link: https://dl.rockylinux.org/vault/rocky/9.4/isos/x86_64/
+Install Instructions for Rocky: https://support.kaspersky.com/ktae/2.3/298070
+
+1. VM Setup:
+   - Rocky Linux is OS RedHat 9
+   - Memory 8Gb
+   - Hard Disk 20Gb (Min 15Gb)
+
+2. Turn On VM
+   - Enable Root= | Password: C1sc0123
+   - Software Selection= Minimal WIth Standard
+
+ > Beign Installation
+ > Reboot System
+
+3. Update Packages
+ : yum update -y
+ : yum install epel-release -y
+

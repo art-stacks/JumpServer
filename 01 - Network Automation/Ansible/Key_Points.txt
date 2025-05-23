@@ -1,0 +1,38 @@
+Reference: https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html
+
+About
+Ansible is an open source IT automation engine that automates provisioning, configuration management, 
+application deployment, orchestration, and many other IT processes.
+
+Use case:
+    - Eliminate repetition and simplify workflows
+    - Manage and maintain system configuration
+    - Continuously deploy complex software
+    - Perform zero-downtime rolling updates
+
+Principles:
+	- Agent-less architecture
+		Low maintenance overhead by avoiding the installation of additional software across IT infrastructure.
+
+	- Simplicity
+		Automation playbooks use straightforward YAML syntax for code that reads like documentation. Ansible is also decentralized, using SSH with existing OS credentials to access to remote machines.
+
+	- Scalability and flexibility
+		Easily and quickly scale the systems you automate through a modular design that supports a large range of operating systems, cloud platforms, and network devices.
+
+	- Idempotence and predictability
+		When the system is in the state your playbook describes Ansible does not change anything, even if the playbook runs multiple times.
+
+
+Ansible Components
+	- Control Node - The machine from which you run the Ansible CLI tools.
+	- Managed Nodes - Also referred to as ‘hosts’, these are the target devices you aim to manage with Ansible..
+	- Inventory (hosts file) - A list of managed nodes provided by one or more ‘inventory sources’. Your inventory can specify information specific to each node, like IP address. 
+	- Playbooks (YAML file) - They contain Plays (which are the basic unit of Ansible execution). This is both an ‘execution concept’ and how we describe the files on which ansible-playbook operates.
+	- Tasks - the instructions specified by the user (Cli config, installation process, etc,.)
+---
+
+Ansible YAML Config
+	- Gather Facts - Facts detail a complete snapshot of the state of each host system, including hardware, network configuration, operating system, and software installed
+	- Become - privilege escalation.
+	- Ansible Network OS - Specifies the type of device ansible is connecting to.

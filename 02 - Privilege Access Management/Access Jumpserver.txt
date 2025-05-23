@@ -1,0 +1,3 @@
+http://localhost/
+admin
+C1sc0123

@@ -1,0 +1,45 @@
+## SSH
+ssh username@ip
+
+
+## REMOVE SSH 
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._.1.4"
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._.100.8"
+ssh-keygen -f "/root/.ssh/known_hosts" -R "10._._.1"
+
+# Or Delete all ssh key cache
+rm -rf /root/.ssh/known_hosts
+
+
+## ANSIBLE ssh_common_args FOR CAT3650
+ansible_ssh_common_args="-o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=+ssh-rsa"
+
+
+## KEY XCHANGE ALGORITHMS
+Link for key exchange algorithms by Aruba: https://arubanetworking.hpe.com/techdocs/AOS-CX/10.07/HTML/5200-7837/Content/Chp_SSH_serv/SSH_serv_cmds/ssh-key-exc-alg-1.htm
+
+# check KEX Algorithm of device.
+show ip ssh
+show crypto key mypubkey rsa
+
+
+## CHANGE ASSOCIATED KEY 
+ip ssh rsa keypair-name [name of key shown in crypto key mypubkey ]
+
+
+## VERIFY MULTIHOST REACHABILITY
+ansible [host] -m ping
+
+# AdHoc Commands for Linux and other Servers
+ansible [host] -a "cat /etc/os-release"
+ansible [host] -a "reboot"
+
+
+## EXECUTE PLAYBOOK WITH TAGS
+ansible-playbook sample.yml --tags [tags]
+ansible-playbook sample.yml --skip-tags [tags]
+
+
+## ADD WINDOWS ROUTE TO REAL DEVICES (FOR RIVAN CISCO DEVICES)
+route add 10.0.0.0 mask 255.0.0.0 10.m.1.4
+route add 200.0.0.0 mask 255.255.255.0 10.m.1.4

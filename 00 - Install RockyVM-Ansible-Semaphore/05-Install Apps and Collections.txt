@@ -1,0 +1,14 @@
+1. Install Apps
+ ~] dnf update -y
+ ~] dnf install epel-release -y
+ ~] dnf install telnet -y
+ ~] dnf install nano -y
+ ~] dnf install vim -y
+ ~] dnf install python3-netaddr -y
+ ~] ansible-galaxy collection install cisco.ios
+ ~] pip install --upgrade ansible
+ ~] dnf install nmap
+
+2. Set Permissions for Ansible
+ ~] chmod -R 777 /etc/ansible/
+ ~] ansible-config dump --only-changed -t all

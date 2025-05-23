@@ -1,0 +1,39 @@
+1. Modify ssh_config
+ ~] nano /etc/ssh/ssh_config
+
+///PASTE
+
+Include /etc/ssh/ssh_config.d/*.conf    <- Should exist by default
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
+
+//
+
+2. Modify sshd_config
+ ~] nano /etc/ssh/sshd_config
+
+///PASTE
+
+Include /etc/ssh/sshd_config.d/*.conf   <- Should exist by default
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
+
+//
+
+3. Restart sshd and Allow Legcy keyx
+ ~] sudo systemctl restart sshd
+ ~] update-crypto-policies --set LEGACY
+ 
+4. Install Python3
+ ~] dnf install python3-pip
+ ~] pip3 install paramiko
+
+5. Disable Keys for Ansible
+ ~] nano ansible.cfg
+
+///PASTE
+
+[paramiko_connection]
+look_for_keys = False
+
+//

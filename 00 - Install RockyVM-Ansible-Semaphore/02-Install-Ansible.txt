@@ -1,0 +1,11 @@
+Will depend on your OS:
+https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html
+
+RockyLinux is RedHat so the following commands will be used:
+
+1. Update Packages
+ ~] yum update -y
+ ~] yum install epel-release -y
+
+2. Install Ansible
+ ~] yum install ansible -y
