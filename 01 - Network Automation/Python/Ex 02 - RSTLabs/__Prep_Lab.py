@@ -101,7 +101,6 @@ d1_config = [
     'int e1/0',
     'sw mo ac',
     'sw ac vlan 12',
-    'ip route 10.69.255.0 255.255.255.248 e3/3',
     'int e3/3',
     'no shut',
     'no sw',
