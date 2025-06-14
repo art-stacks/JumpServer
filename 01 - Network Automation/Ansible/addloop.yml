@@ -18,11 +18,3 @@
           - ip add 102.102.102.102 255.255.255.255
       vars:
         ansible_network_os: ios
-    
-    - name: "Change Name"
-      ios_command:
-        commands:
-          - conf t
-          - hostname devopsnaako
-      vars:
-        ansible_network_os: ios
