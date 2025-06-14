@@ -15,10 +15,21 @@ Websocket API is another modern web API development that uses JSON objects to pa
 A WebSocket API supports two-way communication between client apps and the server. 
 The server can send callback messages to connected clients, making it more efficient than REST API.
 
+  - Persistent Connection:
+Clients and servers maintain an open, two-way connection for continuous communication.
+  - Real-time:
+Allows for immediate data updates and bidirectional data exchange.
+  - Examples: Notifications and Live Updates.
+
 - REST APIs
 Representational State Transfer.
 The client sends requests to the server as data. 
 The server uses this client input to start internal functions and returns output data back to the client. 
+
+  - Request-Response Model: Clients send requests, and servers respond with data.
+  - Stateless: Each request is treated independently, simplifying scaling and caching.
+  - Suitable for: Standard CRUD operations (Create, Read, Update, Delete), web services, and scenarios where real-time updates are not critical.
+  - Examples: Fetching a user's profile, submitting a form, accessing a weather service.
 
 Clients and servers exchange data using HTTP.
 Operations:
