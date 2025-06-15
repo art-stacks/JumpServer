@@ -29,7 +29,7 @@ PubkeyAcceptedKeyTypes +ssh-rsa
  ~] pip3 install paramiko
 
 5. Disable Keys for Ansible
- ~] nano ansible.cfg
+ ~] nano /etc/ansible/ansible.cfg
 
 ///PASTE
 
