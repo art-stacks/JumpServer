@@ -44,12 +44,18 @@ conf t
   password pass
   exec-timeout 0 0
  int g1
+  no ip nat inside
+  no ip nat outside
   ip add 208.8.8.101 255.255.255.0
   no shut
  int g2
+  no ip nat inside
+  no ip nat outside
   ip add 192.168.102.101 255.255.255.0
   no shut
  int g3
+  no ip nat inside
+  no ip nat outside
   ip add 192.168.103.101 255.255.255.0
   no shut
   end
