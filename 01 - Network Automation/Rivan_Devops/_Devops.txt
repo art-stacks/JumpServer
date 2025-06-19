@@ -1,0 +1,184 @@
+********************************************
+********************************************
+1. Verify VMWare VMNetwork Adapters
+	- VMNet1:
+		IP: 192.168.101.0
+		NetMask: 255.255.255.0
+		
+		DHCP Enabled
+	
+	- VMNet2:
+		IP: 192.168.102.0
+		NetMask: 255.255.255.0
+		
+		DHCP  Disabled (Unchecked)
+	
+	- VMNet3:
+		IP: 192.168.103.0
+		NetMask: 255.255.255.0
+		
+		DHCP  Disabled (Unchecked)
+		
+
+********************************************
+********************************************
+2. Setup your CSR1000v
+
+Apply basic IP addressing and Remote connectivity
+
+NetAdapter: NAT
+NetAdapter2: VMNet2
+NetAdapter3: VMNet3
+
+@CSR
+conf t
+ hostname CSR1000v
+ enable secret pass
+ service password-encryption
+ no logging cons
+ no ip domain lookup
+ username admin privilege 15 secret pass
+ line vty 0 24
+  transport input all
+  login local
+  password pass
+  exec-timeout 0 0
+ int g1
+  ip add 208.8.8.101 255.255.255.0
+  no shut
+ int g2
+  ip add 192.168.102.101 255.255.255.0
+  no shut
+ int g3
+  ip add 192.168.103.101 255.255.255.0
+  no shut
+  end
+
+
+Connect to the CSR1000v via SSH on SecureCRT for easy configuration.
+
+
+
+********************************************
+********************************************
+3. Enable Cisco IOx application.
+
+Combine Cisco IOS and Linux OS
+
+@CSR
+conf t
+ iox
+ int g1
+  ip add dhcp
+  ip nat outside
+  shut
+  no shut
+ !
+ int VirtualPortGroup0
+  ip add 192.168.35.1 255.255.255.0
+  ip nat inside
+ !
+ ip nat inside source list GS_NAT_ACL interface g1 overload
+ ip access-list standard GS_NAT_ACL
+  permit 192.168.0.0 0.0.255.255
+ !
+ app-hosting appid guestshell
+  app-vnic gateway1 virtualportgroup 0 guest-interface 0
+   guest-ipaddress 192.168.35.3 netmask 255.255.255.0	
+	app-default-gateway 192.168.35.1  guest-interface 0 
+	name-server0 8.8.8.8
+    app-resource profile custom 
+    cpu 1500 
+    memory 512
+end
+
+Enable the linux-based environment.
+
+@CSR
+enable guestshell
+
+
+
+********************************************
+********************************************
+4. Run Applications and Linux within Cisco
+
+At SecureCRT, access 3 telnet sessions for the CSR.
+
+Use the IP on the CSR's gigabit 2 interface: 192.168.102.101
+	1st Session: CiscoIOS
+	2nd Session: Python
+	3rd Session: Linux
+
+
+
+********************************************
+********************************************
+5. Update the Linux Repo
+
+@Linux
+cat /etc/os-release
+
+sudo su
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+yum update -y
+python.exe -m pip install --upgrade pip
+pip install ascii_magic
+pip install beautifulsoup4
+pip install requests
+
+
+
+********************************************
+********************************************
+6. Use Python to configure Cisco
+
+****
+Execute a show ip int brief command in python to cisco.
+
+@Python
+import cli
+
+mycmd1 = [
+    "show ip int brief",
+]
+
+for k in mycmd1:
+    cli.executep(k)
+
+
+****
+Configure loopbacks from python to cisco.
+
+@Python
+import cli
+
+cmd1 = '''hostname NETDEVOPS
+int loop 4
+ip add 4.4.4.4 255.255.255.255
+int loop 5
+ip add 5.5.5.5 255.255.255.255
+int loop 6
+ip add 6.6.6.6 255.255.255.255
+end
+'''
+cli.configurep(cmd1)
+
+
+
+********************************************
+********************************************
+6. Enable RESTAPI with POSTMAN
+
+@Cisco
+config t
+ip http server
+ip http secure-server
+ip http authentication local
+restconf
+netconf-yang
+end
+show platform software yang-management process
+
