@@ -158,7 +158,7 @@ F1_config = [
     'network 10.255.12.0 0.0.0.3 area 0',
     'passive-interface lo0',
     'passive-interface e0/0',
-    'redistribute bgp',
+    'redistribute bgp 1',
     'exit',
     'router bgp 1',
     'bgp log-neighbor-changes',
