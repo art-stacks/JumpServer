@@ -1,6 +1,13 @@
 # Config
 C1_config = [
     'hostname CoreSW-HQ',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.12.111 255.255.255.255',
     'exit',
@@ -42,6 +49,13 @@ C1_config = [
 
 E1_config = [
     'hostname EdgeRouter-HQ',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.112.109 255.255.255.255',
     'int e0/0',
@@ -63,6 +77,13 @@ E1_config = [
 
 S1_config = [
     'hostname CA-Server',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int e0/0',
     'ip add 10.255.12.6 255.255.255.252',
     'no shut',
@@ -73,6 +94,13 @@ S1_config = [
 
 S2_config = [
     'hostname DNS-Server',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int e0/0',
     'ip add 10.255.12.102 255.255.255.252',
     'no shut',
@@ -83,6 +111,13 @@ S2_config = [
 
 R1_config = [
     'hostname MPLS-Provider',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.12.108 255.255.255.255',
     'exit',
@@ -107,6 +142,13 @@ R1_config = [
 
 E3_config = [
     'hostname EdgeRouter-B',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.12.107 255.255.255.255',
     'int e0/1',
@@ -128,6 +170,13 @@ E3_config = [
 
 S4_config = [
     'hostname Server-Branch-B',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int e0/0',
     'ip add 10.255.12.22 255.255.255.252',
     'no shut',
@@ -138,6 +187,13 @@ S4_config = [
 
 F1_config = [
     'hostname Firepower-HQ',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.12.110 255.255.255.255',
     'exit',
@@ -172,6 +228,13 @@ F1_config = [
 
 I1_config = [
     'hostname ISP-1',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int e0/0',
     'ip add 10.255.13.14 255.255.255.240',
     'no shut',
@@ -194,6 +257,13 @@ I1_config = [
 
 E2_config = [
     'hostname EdgeRouter-A',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int lo0',
     'ip add 10.255.13.122 255.255.255.255',
     'int e0/0',
@@ -221,6 +291,13 @@ E2_config = [
 
 S3_config = [
     'hostname Server-Branch-A',
+    'enable secret pass',
+    'service password-encryption',
+    'line vty 0 4',
+    'password pass',
+    'login',
+    'exec-timeout 0 0',
+    'exit',
     'int e0/0',
     'ip add 10.255.13.26 255.255.255.252',
     'no shut',
