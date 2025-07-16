@@ -111,12 +111,12 @@
           - "ephone 1"
           - video
           - voice service voip
-          - h#$34T#3
+          - h323
           - call start slow
           - ephone 2
           - video
           - voice service voip
-          - h#$34T#3
+          - h323
           - call start slow
           - end
       tags: 
@@ -157,9 +157,9 @@
           - destination-pattern 31..
           - session target ipv4:10.31.100.8
           - codec g711ULAW
-          - dial-peer voice #$34T# Voip
-          - destination-pattern #$34T#..
-          - session target ipv4:10.#$34T#.100.8
+          - dial-peer voice 32 Voip
+          - destination-pattern 32..
+          - session target ipv4:10.32.100.8
           - codec g711ULAW
           - dial-peer voice 41 Voip
           - destination-pattern 41..
